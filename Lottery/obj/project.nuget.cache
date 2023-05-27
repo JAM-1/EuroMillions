@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1OL3Z497clgeAkxB+vAbs91XiSMz7nSykM38hrM1z0xTRwwBj/Gcj+NoP+K+vZYN35RbNonTnEWJzHnpGBhGlQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\EuroMillions.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\John\\.nuget\\packages\\htmlagilitypack\\1.11.43\\htmlagilitypack.1.11.43.nupkg.sha512",
+    "C:\\Users\\John\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
