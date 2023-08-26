@@ -181,22 +181,24 @@ namespace EuroMillions
 					int numberFound = 0;
 					int hotPickFound = 0;
 
-					for (int ii = 5; ii < userNumbers.Count + 1; ii++)
+					// Check the HotPick Results
+					for (int hotPickLoop = 6; hotPickLoop <= 7; hotPickLoop++)
 					{
-						if (individualDraw[ii].Equals(userNumbers[ii - 1]))
+						if (individualDraw[hotPickLoop].Equals(userNumbers[hotPickLoop - 1]))
 						{
 							hotPickFound++;
 						}
 					}
 
-					for (int i = 1; i < userNumbers.Count-1; i++)
+					// Check the EuroMilliions main numbers
+					for (int euroMainNumbers = 1; euroMainNumbers <= 5; euroMainNumbers++)
                     {
 						
-                        if (individualDraw[i].Equals(userNumbers[i - 1]))
+                        if (individualDraw[euroMainNumbers].Equals(userNumbers[euroMainNumbers - 1]))
 						{
 							numberFound++;
 
-							if (numberFound > highestNumber)
+							if (numberFound > highestNumber && numberFound <= 5 && hotPickFound <=2)
 							{
 								highestNumber = numberFound;
 								if (hotPickFound > 0)
@@ -209,7 +211,7 @@ namespace EuroMillions
 								}
 							}
 
-							if (numberFound == 7)
+							if (numberFound == 5 && hotPickFound == 2)
                             {
 								System.IO.File.WriteAllText(@"C:\Users\Public\TestFolder\EuroMillionsResult.txt", individualDraw[0].ToString());
 								MessageBox.Show($"These numbers won the EuroMillions on {individualDraw[0]}");
@@ -251,7 +253,7 @@ namespace EuroMillions
 			
 		}
 
-		public void WarningMessage(object sender, CancelEventArgs e)
+		/*public void WarningMessage(object sender, CancelEventArgs e)
         {
 			int a = 6;
 			CheckForNumberDuplicates();
@@ -265,9 +267,9 @@ namespace EuroMillions
 				e.Cancel = false;
 			}
 			
-		}
+		}*/
 
-		public int CheckForNumberDuplicates()
+		/*public int CheckForNumberDuplicates()
 		{
 			//Collect all your TextBox objects in a new list...
 			List<TextBox> textBoxes = new List<TextBox>
@@ -288,7 +290,7 @@ namespace EuroMillions
 			//return dupes > 0
 
 			return duplicates[;
-		}
+		}*/
 
 		public void ResetNumbers()
         {

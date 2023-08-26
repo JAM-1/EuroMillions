@@ -127,7 +127,7 @@ namespace EuroMillions
             this.textBox8.TabIndex = 7;
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox8.Validating += new CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
-            this.textBox8.Validating += new CancelEventHandler(this.WarningMessage);
+            //this.textBox8.Validating += new CancelEventHandler(this.WarningMessage);
 
             // 
             // btnCheckNumbers
