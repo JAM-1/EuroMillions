@@ -10,7 +10,9 @@ namespace EuroMillions
 {
     public partial class Form1 : Form
     {
-        public Form1()
+		//List<int> numberList = new List<int>(); // Enumerable.Range(1, 10).ToList();
+
+		public Form1()
         {
             InitializeComponent();
 			this.Text = "EuroMillions";
@@ -28,39 +30,67 @@ namespace EuroMillions
 		{
 			List<string> userNumbers = new List<string>();
 			List<string> userHotPicks = new List<string>();
+			bool reset = false;
+			bool complete = false;
+			//while (complete == false)
+            //{
 
-			if (textBox1.Text != null 
-				|| textBox2.Text != null
-				|| textBox3.Text != null
-				|| textBox4.Text != null
-				|| textBox5.Text != null
-				|| textBox7.Text != null
-				|| textBox8.Text != null
-				)
-			{
-				string numberOne = textBox1.Text;
-				userNumbers.Add(DoubleDigit(numberOne));
-				string numberTwo = textBox2.Text;
-				userNumbers.Add(DoubleDigit(numberTwo));
-				string numberThree = textBox3.Text;
-				userNumbers.Add(DoubleDigit(numberThree));
-				string numberFour = textBox4.Text;
-				userNumbers.Add(DoubleDigit(numberFour));
-				string numberFive = textBox5.Text;
-				userNumbers.Add(DoubleDigit(numberFive));
-				string hotpickOne = textBox7.Text;
-				userHotPicks.Add(DoubleDigit(hotpickOne));
-				string hotpickTwo = textBox8.Text;
-				userHotPicks.Add(DoubleDigit(hotpickTwo));
+				if (textBox1.Text != null
+					|| textBox2.Text != null
+					|| textBox3.Text != null
+					|| textBox4.Text != null
+					|| textBox5.Text != null
+					|| textBox7.Text != null
+					|| textBox8.Text != null
+					)
+				{
+					string numberOne = textBox1.Text;
+					userNumbers.Add(DoubleDigit(numberOne));
+					string numberTwo = textBox2.Text;
+					userNumbers.Add(DoubleDigit(numberTwo));
+					string numberThree = textBox3.Text;
+					userNumbers.Add(DoubleDigit(numberThree));
+					string numberFour = textBox4.Text;
+					userNumbers.Add(DoubleDigit(numberFour));
+					string numberFive = textBox5.Text;
+					userNumbers.Add(DoubleDigit(numberFive));
+					string hotpickOne = textBox7.Text;
+					userHotPicks.Add(DoubleDigit(hotpickOne));
+					string hotpickTwo = textBox8.Text;
+					userHotPicks.Add(DoubleDigit(hotpickTwo));
+
+					/*if (CheckForNumberDuplicates())
+					{
+						
+						new CancelEventHandler(WarningMessage());
+						//ResetNumbers();
+						//reset = true;
+						//Application.Exit();
+						//Application.Run(new Form1());
+						//Application.Run(new Form1());
+					}
+
+					if (CheckForHPDuplicates() && reset != true)
+					{
+						MessageBox.Show("Duplicate HotPicks Found");
+						ResetNumbers();
+						reset = true;
+					}*/
 
 
-				userNumbers.Sort();
-				userHotPicks.Sort(); // wrong way round??
+					userNumbers.Sort();
+					userHotPicks.Sort(); // wrong way round??
 
-				foreach (string hotpick in userHotPicks)
-                {
-					userNumbers.Add(hotpick);
-                }
+					foreach (string hotpick in userHotPicks)
+					{
+						userNumbers.Add(hotpick);
+					}
+
+				//	if (reset != true)
+                  //  {
+					//	complete = true;
+                    //}
+				//}
 			}
 
 			return userNumbers;
@@ -123,7 +153,7 @@ namespace EuroMillions
 
 			return yearlyResults;
 		}
-
+		
 		// Get Results for every draw for every year active
 		private static List<List<List<string>>> GetEuroMillionsResults(List<string> euroMillionsYearsActive)
 		{
@@ -198,24 +228,94 @@ namespace EuroMillions
 		}
 
 		// Validate the User Input Numbers
-		private void textBoxValidatingEuroMillionsNumbers(object sender, CancelEventArgs e)
-		{	
+		private void TextBoxValidatingEuroMillionsNumbers(object sender, CancelEventArgs e)
+		{
+			
+			
 			List<string> selectedNumbers = new List<string>();
 
 			TextBox tbValue = sender as TextBox;
-			if (string.IsNullOrWhiteSpace(tbValue.Text) || Int32.Parse(tbValue.Text) < 1 || Int32.Parse(tbValue.Text) > 50 || selectedNumbers.Contains(tbValue.Text))
-			{
+				if (string.IsNullOrWhiteSpace(tbValue.Text) || Int32.Parse(tbValue.Text) < 1 || Int32.Parse(tbValue.Text) > 50)
+				{
+					e.Cancel = true;
+					textBox1.Focus();
+					errorProvider1.SetError(textBox1, "");
+					MessageBox.Show("Number box cannot be left blank, less than 1 or greater than 50 or previously entered");
+				}
+				else
+				{
+					selectedNumbers.Add(tbValue.Text);
+					e.Cancel = false;
+					errorProvider1.SetError(textBox1, "");
+				}
+			
+		}
+
+		public void WarningMessage(object sender, CancelEventArgs e)
+        {
+			int a = 6;
+			CheckForNumberDuplicates();
+			if (CheckForNumberDuplicates() < a)
+            {
+				MessageBox.Show($"Duplicate Numbers Found in box {CheckForNumberDuplicates +1}");
 				e.Cancel = true;
-				textBox1.Focus();
-				errorProvider1.SetError(textBox1, "");
-				MessageBox.Show("Number box cannot be left blank, less than 1 or greater than 50 or previously entered");
 			}
-			else
-			{
-				selectedNumbers.Add(tbValue.Text);
+            else
+            {
 				e.Cancel = false;
-				errorProvider1.SetError(textBox1, "");
 			}
+			
+		}
+
+		public int CheckForNumberDuplicates()
+		{
+			//Collect all your TextBox objects in a new list...
+			List<TextBox> textBoxes = new List<TextBox>
+			{
+				textBox1, textBox2, textBox3, textBox4, textBox5, 
+			};
+
+			//Use LINQ to count duplicates in the list...
+			//int dupes = textBoxes.GroupBy(x => x.Text)
+			//.Where(g => g.Count() > 1)
+			//.Count();
+			IGrouping<TextBox, int> duplicates = textBoxes
+							.Select((t, i) => new {Text = t, Index = i})
+							.GroupBy(g => g.Text)
+							.Where(g => g.Count() > 1);
+
+			//true if duplicates found, otherwise false
+			//return dupes > 0
+
+			return duplicates[;
+		}
+
+		public void ResetNumbers()
+        {
+			textBox1.Clear();
+			textBox2.ResetText();
+			//textBox3.ResetText();
+			//textBox4.ResetText();
+			//textBox5.ResetText();
+			//textBox7.ResetText();
+			//textBox8.ResetText();
+		}
+
+		public bool CheckForHPDuplicates()
+		{
+			//Collect all your TextBox objects in a new list...
+			List<TextBox> textBoxes = new List<TextBox>
+			{
+				textBox7, textBox8
+			};
+
+			//Use LINQ to count duplicates in the list...
+			int dupes = textBoxes.GroupBy(x => x.Text)
+								 .Where(g => g.Count() > 1)
+								 .Count();
+
+			//true if duplicates found, otherwise false
+			return dupes > 0;
 		}
 
 		// Validate the USer Input HotPicks

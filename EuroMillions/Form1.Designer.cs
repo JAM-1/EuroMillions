@@ -1,4 +1,10 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Forms;
+
 namespace EuroMillions
 {
     partial class Form1
@@ -29,6 +35,9 @@ namespace EuroMillions
         /// </summary>
         private void InitializeComponent()
         {
+            List<int> numberList = Enumerable.Range(1, 50).ToList();
+            List<int> hotpickList = Enumerable.Range(1, 12).ToList();
+
             this.components = new System.ComponentModel.Container();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -57,7 +66,7 @@ namespace EuroMillions
             this.textBox1.Size = new System.Drawing.Size(39, 23);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsNumbers);
+            this.textBox1.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
             // 
             // textBox2
             // 
@@ -67,7 +76,7 @@ namespace EuroMillions
             this.textBox2.Size = new System.Drawing.Size(40, 23);
             this.textBox2.TabIndex = 1;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsNumbers);
+            this.textBox2.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
             // 
             // textBox3
             // 
@@ -77,7 +86,7 @@ namespace EuroMillions
             this.textBox3.Size = new System.Drawing.Size(40, 23);
             this.textBox3.TabIndex = 2;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsNumbers);
+            this.textBox3.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
             // 
             // textBox4
             // 
@@ -87,7 +96,7 @@ namespace EuroMillions
             this.textBox4.Size = new System.Drawing.Size(40, 23);
             this.textBox4.TabIndex = 3;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox4.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsNumbers);
+            this.textBox4.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
             // 
             // textBox5
             // 
@@ -97,7 +106,7 @@ namespace EuroMillions
             this.textBox5.Size = new System.Drawing.Size(40, 23);
             this.textBox5.TabIndex = 4;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox5.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsNumbers);
+            this.textBox5.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
             // 
             // textBox7
             // 
@@ -107,7 +116,7 @@ namespace EuroMillions
             this.textBox7.Size = new System.Drawing.Size(40, 23);
             this.textBox7.TabIndex = 6;
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox7.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
+            this.textBox7.Validating += new CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
             // 
             // textBox8
             // 
@@ -117,7 +126,9 @@ namespace EuroMillions
             this.textBox8.Size = new System.Drawing.Size(40, 23);
             this.textBox8.TabIndex = 7;
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox8.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
+            this.textBox8.Validating += new CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
+            this.textBox8.Validating += new CancelEventHandler(this.WarningMessage);
+
             // 
             // btnCheckNumbers
             // 
@@ -130,6 +141,7 @@ namespace EuroMillions
             this.btnCheckNumbers.TabIndex = 8;
             this.btnCheckNumbers.Text = "Check EuroMillions Numbers";
             this.btnCheckNumbers.UseVisualStyleBackColor = true;
+            
             this.btnCheckNumbers.Click += new System.EventHandler(this.btnCheckEuroMillionsNumbers_Click);
             // 
             // lblNumbers

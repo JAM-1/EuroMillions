@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\EuroMillions.csproj": {}
+    "C:\\Users\\John\\source\\repos\\EuroMillions\\EuroMillions\\EuroMillions.csproj": {}
   },
   "projects": {
-    "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\EuroMillions.csproj": {
+    "C:\\Users\\John\\source\\repos\\EuroMillions\\EuroMillions\\EuroMillions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\EuroMillions.csproj",
+        "projectUniqueName": "C:\\Users\\John\\source\\repos\\EuroMillions\\EuroMillions\\EuroMillions.csproj",
         "projectName": "EuroMillions",
-        "projectPath": "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\EuroMillions.csproj",
+        "projectPath": "C:\\Users\\John\\source\\repos\\EuroMillions\\EuroMillions\\EuroMillions.csproj",
         "packagesPath": "C:\\Users\\John\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\John\\source\\repos\\EuroMillions\\Lottery\\obj\\",
+        "outputPath": "C:\\Users\\John\\source\\repos\\EuroMillions\\EuroMillions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
