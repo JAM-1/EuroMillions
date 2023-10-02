@@ -42,7 +42,7 @@ namespace EuroMillions
             }
 		}
 
-        private void btnCheckEuroMillionsNumbers_Click(object sender, EventArgs e)
+        private void BtnCheckEuroMillionsNumbers_Click(object sender, EventArgs e)
         {
 			if (CheckForDuplicates())
 			{
@@ -257,7 +257,7 @@ namespace EuroMillions
 		}
 
 		// Validate the User Input HotPicks
-		private void textBoxValidatingEuroMillionsHotPicks(object sender, CancelEventArgs e)
+		private void TextBoxValidatingEuroMillionsHotPicks(object sender, CancelEventArgs e)
 		{
 			TextBox tbValue = sender as TextBox;
 			if (string.IsNullOrWhiteSpace(tbValue.Text) || Int32.Parse(tbValue.Text) < 1 || Int32.Parse(tbValue.Text) > 12)
@@ -292,7 +292,7 @@ namespace EuroMillions
 		}
 
 		// Clear all Text Boxes
-        private void btnClearNumbers_Click(object sender, EventArgs e)
+        private void BtnClearNumbers_Click(object sender, EventArgs e)
         {
 			Action<Control.ControlCollection> func = null;
 
@@ -308,7 +308,7 @@ namespace EuroMillions
 			func(Controls);
 		}
 
-		private void btnGenerateDraws_Click(object sender, EventArgs e)
+		private void BtnGenerateDraws_Click(object sender, EventArgs e)
 		{
 			Random r = new Random();
 			if (textBox6.Text != null)
@@ -430,7 +430,7 @@ namespace EuroMillions
 						$"{sortedBonusBall.Keys.ElementAt(1)}"
 						);
 
-					btnGenerateDraws_Click(sender, e);
+					BtnGenerateDraws_Click(sender, e);
 				}
 			}
 		}
