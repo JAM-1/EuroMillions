@@ -37,8 +37,17 @@ namespace EuroMillions
         {
             List<int> numberList = Enumerable.Range(1, 50).ToList();
             List<int> hotpickList = Enumerable.Range(1, 12).ToList();
+            List<string> usernumbers = new List<string>();
+
 
             this.components = new System.ComponentModel.Container();
+            //this.textBox1.Enabled = false;
+            //this.textBox2.Enabled = false;
+            //this.textBox3.Enabled = false;
+            //this.textBox4.Enabled = false;
+            //this.textBox5.Enabled = false; 
+            //this.textBox7.Enabled = false;
+            //this.textBox8.Enabled = false;
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -57,6 +66,7 @@ namespace EuroMillions
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+
             // 
             // textBox1
             // 
@@ -67,19 +77,35 @@ namespace EuroMillions
             this.textBox1.TabIndex = 0;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
+            //usernumbers.Add(this.textBox1.Text);
+
             // 
             // textBox2
             // 
+            if (this.textBox1!= null)
+            {
+                this.textBox2.Enabled = true;
+            }
             this.textBox2.Location = new System.Drawing.Point(85, 99);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(40, 23);
             this.textBox2.TabIndex = 1;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
+            this.textBox2.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);     
+           /* while (usernumbers.Contains(this.textBox2.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);   
+            }*/
+
+
             // 
             // textBox3
             // 
+            if (this.textBox2 != null)
+            {
+                this.textBox3.Enabled = true;
+            }
             this.textBox3.Location = new System.Drawing.Point(131, 99);
             this.textBox3.MaxLength = 2;
             this.textBox3.Name = "textBox3";
@@ -87,9 +113,19 @@ namespace EuroMillions
             this.textBox3.TabIndex = 2;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox3.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
+           /* while (usernumbers.Contains(this.textBox3.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);
+            }*/
+
+
             // 
             // textBox4
             // 
+            if (this.textBox3 != null)
+            {
+                this.textBox4.Enabled = true;
+            }
             this.textBox4.Location = new System.Drawing.Point(177, 99);
             this.textBox4.MaxLength = 2;
             this.textBox4.Name = "textBox4";
@@ -97,9 +133,19 @@ namespace EuroMillions
             this.textBox4.TabIndex = 3;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox4.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
+            /*while (usernumbers.Contains(this.textBox2.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);
+            }*/
+
+
             // 
             // textBox5
             // 
+            if (this.textBox4 != null)
+            {
+                this.textBox5.Enabled = true;
+            }
             this.textBox5.Location = new System.Drawing.Point(223, 99);
             this.textBox5.MaxLength = 2;
             this.textBox5.Name = "textBox5";
@@ -107,9 +153,18 @@ namespace EuroMillions
             this.textBox5.TabIndex = 4;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox5.Validating += new CancelEventHandler(this.TextBoxValidatingEuroMillionsNumbers);
+            /*while (usernumbers.Contains(this.textBox2.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);
+            }*/
+
             // 
             // textBox7
             // 
+            if (this.textBox5 != null)
+            {
+                this.textBox7.Enabled = true;
+            }
             this.textBox7.Location = new System.Drawing.Point(282, 99);
             this.textBox7.MaxLength = 2;
             this.textBox7.Name = "textBox7";
@@ -117,9 +172,18 @@ namespace EuroMillions
             this.textBox7.TabIndex = 6;
             this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox7.Validating += new CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
+            /*while (usernumbers.Contains(this.textBox2.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);
+            }*/
+
             // 
             // textBox8
             // 
+            if (this.textBox7 != null)
+            {
+                this.textBox8.Enabled = true;
+            }
             this.textBox8.Location = new System.Drawing.Point(328, 99);
             this.textBox8.MaxLength = 2;
             this.textBox8.Name = "textBox8";
@@ -127,7 +191,10 @@ namespace EuroMillions
             this.textBox8.TabIndex = 7;
             this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox8.Validating += new CancelEventHandler(this.textBoxValidatingEuroMillionsHotPicks);
-            //this.textBox8.Validating += new CancelEventHandler(this.WarningMessage);
+            /*while (usernumbers.Contains(this.textBox2.Text))
+            {
+                this.textBox2.Validating += new CancelEventHandler(this.DuplicateNumber);
+            }*/
 
             // 
             // btnCheckNumbers
@@ -140,8 +207,7 @@ namespace EuroMillions
             this.btnCheckNumbers.Size = new System.Drawing.Size(124, 52);
             this.btnCheckNumbers.TabIndex = 8;
             this.btnCheckNumbers.Text = "Check EuroMillions Numbers";
-            this.btnCheckNumbers.UseVisualStyleBackColor = true;
-            
+            this.btnCheckNumbers.UseVisualStyleBackColor = true; 
             this.btnCheckNumbers.Click += new System.EventHandler(this.btnCheckEuroMillionsNumbers_Click);
             // 
             // lblNumbers

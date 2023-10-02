@@ -1,0 +1,7 @@
+C:\Users\John\Desktop\Lottery text files\publish\EuroMillions.exe
+C:\Users\John\Desktop\Lottery text files\publish\EuroMillions.dll
+C:\Users\John\Desktop\Lottery text files\publish\EuroMillions.deps.json
+C:\Users\John\Desktop\Lottery text files\publish\EuroMillions.runtimeconfig.json
+C:\Users\John\Desktop\Lottery text files\publish\EuroMillions.pdb
+C:\Users\John\Desktop\Lottery text files\publish\HtmlAgilityPack.dll
+C:\Users\John\Desktop\Lottery text files\publish\Newtonsoft.Json.dll
