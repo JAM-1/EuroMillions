@@ -19,6 +19,7 @@ namespace EuroMillions
 
 		#region EuroMillions2
 
+		// Check for Duplicates after Input and Click
 		private bool CheckForDuplicates()
 		{
 			bool reset = false;
