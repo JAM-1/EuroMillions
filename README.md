@@ -1,5 +1,5 @@
 # EuroMillions
-Written in C# Windows Form App that allows User to enter EuroMillions numbers
+Written in C# Windows Form App that allows User to enter EuroMillions numbers and check these against every EuroMillions draw.
 
 These numbers will be checked against all winning draws. 
 The result will inform if the numbers entered have ever won the EuroMillions or the closest they have come. 
